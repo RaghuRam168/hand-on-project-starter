@@ -1,0 +1,27 @@
+.background-screen-container{
+    display: inline;
+    /* align-items: center;
+    justify-content: center; */
+    /* width: 1400px; */
+    height:90vh;
+    margin: 0px auto;
+    background-color: black;
+}
+.container1{
+    margin: 0px auto;
+    float: left;
+    width: 50%;
+   
+}
+.container2{
+    width: 50%;
+    margin: auto;
+    float: right;
+}
+
+.container2 h1{
+   text-align: center;
+}
+.container2 p{
+    margin: 0px auto;
+}

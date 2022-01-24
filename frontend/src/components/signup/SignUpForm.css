@@ -1,0 +1,51 @@
+.sign-up-division{
+    height: 470px;
+    width: 498px;
+    box-sizing: border-box;
+    position: absolute;
+    border: 1px solid #DFE0E0;
+    border-radius: 5px;
+}
+
+
+/* 
+.form{
+    /* justify-items: center; 
+    align-content: center;  *
+    padding: 20px;
+    border: 5px;
+    height: 450px;
+    width: 498px;
+    
+} */
+
+h3{
+    color:black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.form-control{
+    border: 1px solid #DFE0E0;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    margin: 10px;
+    width: 400px;
+    height: 44px;
+}
+
+.signup-btn{
+    margin-top: 10px;
+    color:#fff;
+    background: #142683;
+    display: block;
+    width:430px;
+    height: 44px;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+}

@@ -1,0 +1,51 @@
+.login{
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+.item1{
+    position: absolute;
+    float: left;
+    line-height: 2rem;
+    width: 42%;
+    background-color:#F7F8FA80;
+    width: 50%;
+    
+}
+
+.heading{
+    position: relative;
+    font-size: 2rem;
+    top: 200px;
+    left: 140px;
+}
+
+.description{
+    position: relative;
+    top: 200px;
+    left: 130px;
+    width: 60%;
+
+}
+
+.img{
+    border: 1px solid white;
+    position: relative;
+    top: 300px;
+    left: 40px;
+}
+
+
+p{
+    font-size: 1.2rem;
+}
+
+
+.item2{
+    top: 100px;
+    float: right;
+    left: 800px;
+    top: 150px;
+    position: absolute;
+}
