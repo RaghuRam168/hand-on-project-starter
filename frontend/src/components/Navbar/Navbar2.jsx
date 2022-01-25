@@ -42,7 +42,7 @@ const Navbar2 = () => {
           <li><Link to='/my-api'name='myapi' className={underLine.myapi?'links underline':'links' } onClick={linkHandler} >My APIs</Link></li>
           <li><Link to='/my-account' name='myAccount' className={underLine.myAccount?'links underline':'links' } onClick={linkHandler} >My Account</Link></li>
           {/* <li><Link to='/new-api'><button  className='new-api-btn' onClick={'onclickHandler'} >+New API</button></Link></li> */}
-          <li><button  className='new-api-btn' onClick={onclickHandler} >Logout</button></li>
+          <li><button  className='new-api-btn' onClick={onclickHandler} >+New API</button></li>
       </ul>
   </nav>
 };

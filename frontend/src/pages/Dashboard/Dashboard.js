@@ -11,7 +11,7 @@ const Dashboard = () => {
   if (user===null){
     navigate("/");
   }
- // alert(user)
+  alert(user)
 
   const data = [
     {

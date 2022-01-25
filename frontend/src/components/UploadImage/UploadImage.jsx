@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./UploadImage.css";
 import image from "./profile.png";
-const UploadImage = () => {
+const UploadImage = (props) => {
   const [profile, setProfile] = useState(image);
   const[remove,setRemove] = useState(false);
   const onUpload = (event) => {
@@ -25,7 +25,9 @@ const UploadImage = () => {
   }
 
 const removeBackgroundHandler = (event) =>{
-  
+  props.onRemoveBackground(profile)
+  setProfile(image)
+  setRemove(false)
 }
 
   return (
@@ -36,7 +38,7 @@ const removeBackgroundHandler = (event) =>{
         <img src={profile} alt="Upload" />
       </div>
       {!remove?<p>File should be png, jpg and less than 5mb</p>:<></>}
-      {!remove?<label className="upload-label" htmlFor="input">{"Upload Image->"}</label>:<></>}
+      {!remove?<label className="upload-label" htmlFor="input">Upload Image</label>:<></>}
         <input  type="file" accept="image/png image/jpg" onChange={onUpload} id="input" />
         <div style={{margin:"100px auto"}}>
         {remove? <button onClick={clearImageHandler} >Clear Image</button>:<p></p>}
