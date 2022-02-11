@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const users = require('../controllers/users')
+const ApiController = require('../controllers/ApiController')
 //const signUpTemplateCopy = require('../Models/signUpModel')
 //const loginModel = require('../Models/loginModel')
 
@@ -44,12 +45,27 @@ const users = require('../controllers/users')
 
 //router.get('/users',users.getUsers);
 router.route('/users').get(users.getUsers)
-router.get('/:username',users.getSpecifiedUser);
-
+//router.get('/:username',users.getSpecifiedUser);
+router.route('/specified-user/:username').get(users.getSpecifiedUser);
+router.post('/remove-background',users.removeBackground)
 //router.route('/signup').post(users.signup)
+router.route('/delete-login').delete(users.deleteLogin)
 router.route('/register').post(users.registerUser)
 router.route('/login').post(users.login)
 router.get('/account',(req,res) => {
     res.send("<h1>Account</h1>")
 })
+
+//api addition
+router.route('/addAPI').post(ApiController.addApi)
+//fetch api records
+router.route('/myAPIs').post(ApiController.fetchAPI)
+//fetch all APIs
+router.route('/fetchAll').get(ApiController.fetchAll)
+//fetch specified API
+router.route('/fetch-spedified-api').get(ApiController.fetchSpedifiedApi)
+//delete an API
+router.route('/deleteAPI').post(ApiController.deleteAPI)
+//update api
+router.route('/updateAPI').patch(ApiController.updateAPI)
 module.exports=router

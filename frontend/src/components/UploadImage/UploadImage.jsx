@@ -1,14 +1,25 @@
 import React, { useState } from "react";
 import "./UploadImage.css";
 import image from "./profile.png";
+import axios from "axios";
+
+const formData = new FormData()
+
 const UploadImage = (props) => {
+  let imgURL=''
   const [profile, setProfile] = useState(image);
   const[remove,setRemove] = useState(false);
+  const[url,setURL]=useState('')
+
   const onUpload = (event) => {
     const reader = new FileReader();
-    reader.onload = () => {
+    setURL(event.target.result);
+    reader.onload = (event) => {
       if (reader.readyState === 2) {
         setProfile(reader.result);
+        imgURL=event.target.result;
+        formData.append('image',profile)
+        console.log(profile)
         setRemove(true)
       }
     };
@@ -24,10 +35,20 @@ const UploadImage = (props) => {
     setRemove(false)
   }
 
-const removeBackgroundHandler = (event) =>{
-  props.onRemoveBackground(profile)
-  setProfile(image)
-  setRemove(false)
+const removeBackgroundHandler = async(event) =>{
+  const x ={
+    image:profile
+  }
+  try {
+    const data = await(axios.post('http://localhost:4000/upload',formData))
+    console.log(data)
+    props.onRemoveBackground(data.file)
+    setProfile(image)
+    setRemove(false)
+  } catch (error) {
+    alert('Error with backend')
+  }
+    
 }
 
   return (

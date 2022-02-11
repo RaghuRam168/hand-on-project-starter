@@ -4,14 +4,14 @@ const app=express()
 const dotenv = require('dotenv')
 const routerUrl = require('./Routes/routes')
 const cors = require('cors')
-
+const connection = require('./utils/connection')
 app.use(cors())
 app.use(express.json())
 // app.use('/',(req,res) => {
 //     res.send("<h1>hello</h1>")
 // })
-dotenv.config()
-
+dotenv.config();
+//connection();
 mongoose.connect(process.env.DATABASE_ACCESS,()=>console.log("Connected to data base"))
 app.get('/',(req,res)=>{
     res.send("<h1>Raghu</h1>");

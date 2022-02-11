@@ -13,12 +13,14 @@ import UploadImage from './components/UploadImage/UploadImage';
 import BackgroundRemoverScreen from './pages/BackgroundRemover/BackgroundRemoverScreen';
 import MyAPIs from './pages/MyApis/MyAPIs';
 import MyAccount from './pages/Profile/MyAccount';
+import NewAPIModal from './components/NewAPIModal/NewAPIModal';
 function App() {
   return (
 
 
     <Router>
     <Navbar2/>
+    {/* <NewAPIModal/> */}
       <Routes>
           <Route path='/' element={<LoginPage/>} />
           <Route path='/register' element={<RegisterPage/>} />
