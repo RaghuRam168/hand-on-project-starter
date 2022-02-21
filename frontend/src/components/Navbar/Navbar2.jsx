@@ -12,8 +12,7 @@ const Navbar2 = () => {
   })
 
   const onclickHandler = () =>{
-    localStorage.clear();
-    navigate('/')
+    navigate('/new-api')
 }
 
   const linkHandler = (e) =>{

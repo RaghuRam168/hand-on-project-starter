@@ -15,6 +15,7 @@
 
 .card{
     display: block;
+    background-color: #fff;
     width:20%;
     padding: 0px;
     box-sizing: border-box;

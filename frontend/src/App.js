@@ -27,6 +27,7 @@ function App() {
           <Route path='/dash-board' element={<Dashboard/>}/>
           <Route path='/background-remover' element={<BackgroundRemoverScreen/>}/>
           <Route path = '/my-api' element={<MyAPIs/>}/>
+          <Route path='/new-api' element={<NewAPIModal/>} />
           <Route path='/my-account' element={<MyAccount/>}/>
           <Route path='*' element={<Error/>}/>
       </Routes>

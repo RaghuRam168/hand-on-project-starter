@@ -8,7 +8,10 @@ const BackgroundRemoverScreen = () => {
   const[backgroundImage,setBackgroundImage] = useState(image)
 
   const onRemoveBackground = (reqImage)=>{
-    setBackgroundImage(reqImage)
+    console.log(reqImage.data)
+    const x = reqImage
+    //setBackgroundImage(`data:image/png;base64,${x.toString('base64')}`)
+    setBackgroundImage(`data:image/png;base64,${x}`)
     setRemove(true)
   }
 

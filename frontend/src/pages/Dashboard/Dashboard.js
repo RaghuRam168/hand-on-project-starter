@@ -26,7 +26,7 @@ const Dashboard =() => {
 
 
   return (
-    <div>
+    <div style={{backgroundColor:"#E5E5E5"}}>
       <Banner />
       <Title title="All APIs"></Title>
       <RowColoum title="All APIs" cards={cards} />

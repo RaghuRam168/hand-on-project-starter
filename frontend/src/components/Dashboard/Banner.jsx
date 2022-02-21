@@ -23,6 +23,7 @@ const Banner = () => {
   
 
   return (
+    
     <div className="banner">
       <img className="banner-img" src={bannerImage} alt="Banner" />
       <div className="banner-description">
@@ -33,6 +34,7 @@ const Banner = () => {
         <button onClick={onclickHandler}  >View API</button>
       </div>
     </div>
+   
   );
 };
 

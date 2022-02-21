@@ -1,14 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect ,useState } from "react";
-import Banner from "../../components/Dashboard/Banner";
 import RowColoum from "../../components/RowColoum";
-import image from "../../components/card.jpg";
 import Title from "../../components/UI/Title";
 import axios from "axios";
 
 const MyAPIs = () => {
-
+  
   const[cardData,setCardData]=useState([])
   const loginData = localStorage.getItem("userInfo")
   const d = JSON.parse(loginData)
@@ -21,8 +19,6 @@ const MyAPIs = () => {
     const fetchData = async() =>{
       const x = await axios.post('http://localhost:4000/api/myAPIs',user);
       setCardData(x.data);
-      console.log(cardData.length())
-
     }
     fetchData();
   },[])
@@ -35,7 +31,7 @@ const MyAPIs = () => {
     await localStorage.clear();
     navigate("/");
   };
-
+console.log(cardData)
 
   return (
     <div>
