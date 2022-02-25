@@ -6,6 +6,7 @@ import image from "../../components/card.jpg";
 import Title from "../../components/UI/Title";
 import axios from "axios";
 const Dashboard =() => {
+  const[skeleton,setSkeleton] = useState(true)
   const[cards,setCards]=useState([])
   const user=localStorage.getItem("userInfo")
   const navigate = useNavigate();
@@ -18,7 +19,8 @@ const Dashboard =() => {
   useEffect(()=>{
     const fetchData = async () =>{
      const data = await axios.get("http://localhost:4000/api/fetchAll",{});
-      setCards(data.data)
+     setSkeleton(false) 
+     setCards(data.data)
       console.log(data)
     }
     fetchData();
@@ -29,7 +31,7 @@ const Dashboard =() => {
     <div style={{backgroundColor:"#E5E5E5"}}>
       <Banner />
       <Title title="All APIs"></Title>
-      <RowColoum title="All APIs" cards={cards} />
+      <RowColoum title="All APIs" cards={cards} skeleton={skeleton}/>
     </div>
   );
 };
