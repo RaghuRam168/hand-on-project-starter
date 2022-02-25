@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const users = require('../controllers/users')
 const ApiController = require('../controllers/ApiController')
+const imageController = require('../controllers/imageController')
+const BgRemove = require('../controllers/BgRemoveController')
 //const signUpTemplateCopy = require('../Models/signUpModel')
 //const loginModel = require('../Models/loginModel')
 
@@ -57,7 +59,7 @@ router.get('/account',(req,res) => {
 })
 
 //api addition
-router.route('/addAPI').post(ApiController.addApi)
+router.route('/addAPI').post(ApiController.upload,ApiController.addApi)
 //fetch api records
 router.route('/myAPIs').post(ApiController.fetchAPI)
 //fetch all APIs
@@ -68,4 +70,20 @@ router.route('/fetch-spedified-api').get(ApiController.fetchSpedifiedApi)
 router.route('/deleteAPI').post(ApiController.deleteAPI)
 //update api
 router.route('/updateAPI').patch(ApiController.updateAPI)
+
+
+//BG remove
+router.route('/bg-remove').post(BgRemove.upload,BgRemove.BgRemove)
+
+
+//const { upload,uploadImage,backupImage} = require('../Controllers/udayController')
+//uploadImage,
+// router.post('/uday',uploadImage,upload)
+//  router.route('/backup').post(uploadImage,backupImage)
+// //image upload
+const fileController = require('../Controllers/fileController')
+router.route('/xnxx').post(fileController.upload,fileController.uploadImage)
+router.route('/fetch-img').get(fileController.fetchImage)
+
+// router.route('/upload').post(imageController.uploadImage)
 module.exports=router

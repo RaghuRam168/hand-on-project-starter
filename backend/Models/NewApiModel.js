@@ -20,6 +20,15 @@ const NewApiModel = mongoose.Schema({
     author:{
         required:true,
         type:String
+    },
+    //image
+    image:{
+        type:String,
+        required:true
+    },
+    file:{
+        type:Buffer,
+        required:true
     }
 })
 
