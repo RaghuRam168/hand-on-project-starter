@@ -82,7 +82,7 @@ router.route('/bg-remove').post(BgRemove.upload,BgRemove.BgRemove)
 //  router.route('/backup').post(uploadImage,backupImage)
 // //image upload
 const fileController = require('../Controllers/fileController')
-router.route('/xnxx').post(fileController.upload,fileController.uploadImage)
+router.route('/fetch-file').post(fileController.upload,fileController.uploadImage)
 router.route('/fetch-img').get(fileController.fetchImage)
 
 // router.route('/upload').post(imageController.uploadImage)
