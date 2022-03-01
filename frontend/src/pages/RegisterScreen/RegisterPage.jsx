@@ -1,11 +1,12 @@
 import React from "react";
 import SignUpForm from "../../components/signup/SignUpForm";
 import person from "../person.jpeg";
-import Navbar from "../../components/Navbar/Navbar";
 import "./RegisterPage.css";
+import Navbar2 from "../../components/Navbar/Navbar2";
 const RegisterPage = () => {
   return (
     <div>
+      <Navbar2/>
       <div className="register">
         <div className="item1">
           <img className="image" src={person} alt="person" />

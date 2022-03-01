@@ -4,41 +4,37 @@ import { useEffect ,useState } from "react";
 import RowColoum from "../../components/RowColoum";
 import Title from "../../components/UI/Title";
 import axios from "axios";
-
+import Navbar2 from "../../components/Navbar/Navbar2";
 const MyAPIs = () => {
-  
-  const[cardData,setCardData]=useState([])
+  const navigate = useNavigate();
+  const[cards,setCards]=useState([])
+  const[skeleton,setSkeleton] = useState(true)
   const loginData = localStorage.getItem("userInfo")
   const d = JSON.parse(loginData)
-  const user = {
-    author:d['token']
-  }
-
-
   useEffect(()=>{
     const fetchData = async() =>{
-      const x = await axios.post('http://localhost:4000/api/myAPIs',user);
-      setCardData(x.data);
+      if (d===null){
+        navigate("/");
+      }
+      const user = {
+        author:d['token']
+      }
+      const x = await axios.post('https://apiplace.herokuapp.com/api/myAPIs',user);
+      setSkeleton(false)
+      setCards(x.data);
     }
     fetchData();
   },[])
 
-  const navigate = useNavigate();
-  if (!localStorage.getItem("userInfo")) {
-    navigate("/");
-  }
-  const Logout = async () => {
-    await localStorage.clear();
-    navigate("/");
-  };
-console.log(cardData)
+
+console.log(cards)
 
   return (
     <div>
-        <Title title="My APIs"/>
-      <RowColoum title="All APIs" cards={cardData} />
+      <Navbar2/>
+      <Title title="All APIs"></Title>
+      <RowColoum title="All APIs" cards={cards} skeleton={skeleton}/>
     </div>
   );
-};
-
+}
 export default MyAPIs;

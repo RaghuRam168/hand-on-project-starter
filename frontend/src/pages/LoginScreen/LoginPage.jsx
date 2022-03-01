@@ -2,8 +2,11 @@ import React from "react";
 import person from "../person.jpeg";
 import LoginForm from "../../components/Login/NewLogin";
 import "./LoginPage.css"
+import Navbar from "../../components/Navbar/Navbar";
 const LoginPage = () => {
   return (
+    <>
+      <Navbar/>
       <div className="login">
         <div className="item1">
           <img className="img" src={person} alt="person" />
@@ -17,6 +20,7 @@ const LoginPage = () => {
             <LoginForm />
         </div>
     </div>
+    </>
   );
 };
 

@@ -14,6 +14,9 @@ const Navbar2 = () => {
   const onclickHandler = () =>{
     navigate('/new-api')
 }
+const onClickLogo = ()=>{
+  navigate('/dash-board')
+}
 
   const linkHandler = (e) =>{
     const user = localStorage.getItem("userInfo")
@@ -36,7 +39,7 @@ const Navbar2 = () => {
 
  
   return <nav>
-      <img src={logo} alt="Cuvette" />
+      <img src={logo} alt="Cuvette" onClick={onClickLogo}/>
       <ul className='list'>
           <li><Link to='/my-api'name='myapi' className={underLine.myapi?'links underline':'links' } onClick={linkHandler} >My APIs</Link></li>
           <li><Link to='/my-account' name='myAccount' className={underLine.myAccount?'links underline':'links' } onClick={linkHandler} >My Account</Link></li>

@@ -14,12 +14,13 @@ import BackgroundRemoverScreen from './pages/BackgroundRemover/BackgroundRemover
 import MyAPIs from './pages/MyApis/MyAPIs';
 import MyAccount from './pages/Profile/MyAccount';
 import NewAPIModal from './components/NewAPIModal/NewAPIModal';
+import AddAPI from './pages/AddAPI/AddAPI';
 function App() {
   return (
 
 
     <Router>
-    <Navbar2/>
+    {/* <Navbar2/> */}
     {/* <NewAPIModal/> */}
       <Routes>
           <Route path='/' element={<LoginPage/>} />
@@ -27,7 +28,7 @@ function App() {
           <Route path='/dash-board' element={<Dashboard/>}/>
           <Route path='/background-remover' element={<BackgroundRemoverScreen/>}/>
           <Route path = '/my-api' element={<MyAPIs/>}/>
-          <Route path='/new-api' element={<NewAPIModal/>} />
+          <Route path='/new-api' element={<AddAPI/>} />
           <Route path='/my-account' element={<MyAccount/>}/>
           <Route path='*' element={<Error/>}/>
       </Routes>

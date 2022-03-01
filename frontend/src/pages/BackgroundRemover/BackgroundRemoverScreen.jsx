@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import UploadImage from '../../components/UploadImage/UploadImage';
 import './BackgroundRemoverScreen.css'
 import image from './background.jpeg'
+import Navbar2 from '../../components/Navbar/Navbar2';
 const BackgroundRemoverScreen = () => {
 //    return <UploadImage/>
   const[remove,setRemove] = useState(false);
@@ -24,7 +25,9 @@ const BackgroundRemoverScreen = () => {
       alert("Successfully Downloaded")
   }
 
-  return <div className='background-screen-container' >
+  return <>
+  <Navbar2/>
+  <div className='background-screen-container' >
       <div className='container1'  >
         <h1>Remove image background</h1>
         <p>100% automatic and free</p>
@@ -40,6 +43,7 @@ const BackgroundRemoverScreen = () => {
         <div className='upload-container' > <UploadImage  onRemoveBackground={onRemoveBackground} /></div>
        </div>
   </div>
+  </>
 ;
 };
 
