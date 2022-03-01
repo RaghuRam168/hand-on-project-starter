@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SignUpForm.css";
-import { Navigate } from "react-router-dom";
-
+var Spinner = require('react-spinkit')
 const SignUpForm = (props) => {
   let navigate = useNavigate();
+  const [loading,setLoading]=useState(false)
   const [user, setUser] = useState({
     fullname: "",
     username: "",
@@ -21,28 +21,26 @@ const SignUpForm = (props) => {
   };
   const submitHandler = async (event) => {
     event.preventDefault();
+    setLoading(true)
     console.log("clicked");
-    // props.onSignIn(user);
     const config = {
       headers: {
         "Content-type": "application/json",
       },
     };
     try {
-     await axios.post("http://localhost:4000/api/register", user,config);
+     await axios.post("https://apiplace.herokuapp.com/api/register", user,config);
       navigate("/");
     } catch (error) {
       alert("Enter the creadentials which are no registered")
     }
-
-    // axios.post("http://localhost:4000/api/register", user);
-    // navigate("/");
 
     setUser({
       fullname: "",
       email: "",
       password: "",
     });
+    setLoading(false)
   };
 
   const onchange = (event) => {
@@ -84,10 +82,12 @@ const SignUpForm = (props) => {
             className="form-control"
           />
         </div>
-        {/* <Button className={'btn-block'} onClick={submitHandler} color='white' backColor='black' text='Register'/> */}
-        <button className="signup-btn" onClick={submitHandler}>Register</button>
-        <p className="or">OR</p>
-        <button className="signup-btn" onClick={onchange}>Login</button>
+      {!loading && <button className="signup-btn" onClick={submitHandler}>Register</button>}
+      {!loading && <p className="or">OR</p>}
+      {!loading && <button className="signup-btn" onClick={onchange}>Login</button>}
+      <div className="loading">
+          {loading && <Spinner name="line-scale" color="#142683"  style={{margin:"auto"}}/>}
+        </div>
       </form>
     </div>
   );

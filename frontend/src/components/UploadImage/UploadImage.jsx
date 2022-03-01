@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import "./UploadImage.css";
 import image from "./profile.png";
 import axios from "axios";
+var Spinner = require('react-spinkit');
 
 const UploadImage = (props) => {
   const formData = new FormData()
   const [profile, setProfile] = useState(image);
   const[bgRemove,setBgRemove]=useState(null)
   const[remove,setRemove] = useState(false);
-
+  const[loading,setLoading]=useState(false)
   const onUpload = async(event) => {
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -29,18 +30,21 @@ const UploadImage = (props) => {
   const onSubmit = (event) => {
     event.preventDefault();
     formData.append("photo",bgRemove)
+    setLoading(true)
     const postImage =async()=>{ 
-      const response = await axios.post("http://localhost:4000/api/bg-remove",formData)
+      const response = await axios.post("https://apiplace.herokuapp.com/api/bg-remove",formData)
       console.log(response)
       if(response){
         props.onRemoveBackground(response.data)
         setProfile(image)
         setRemove(false)
+        setLoading(false)
       }
       else{
         alert('Error with backend')
       }
       }
+     
       postImage();
   };
 
@@ -76,12 +80,13 @@ const UploadImage = (props) => {
       <div className="image-container">
         <img src={profile} alt="Upload" />
       </div>
-      {!remove?<p>File should be png, jpg and less than 5mb</p>:<></>}
-      {!remove?<label className="upload-label" htmlFor="input">Upload Image</label>:<></>}
+      {!remove && <p>File should be png, jpg and less than 5mb</p>}
+      {!remove && <label className="upload-label" htmlFor="input">Upload Image</label>}
         <input  type="file" accept="image/png image/jpg" onChange={onUpload} id="input" />
         <div style={{margin:"100px auto"}}>
-        {remove? <button onClick={clearImageHandler} >Clear Image</button>:<p></p>}
-        {remove? <button type="submit">Remove Background</button>:<p></p>}
+        {!loading && remove && <button onClick={clearImageHandler} >Clear Image</button>}
+        {!loading && remove && <button type="submit">Remove Background</button>}
+        {loading && <Spinner name="line-scale" color="#142683"/>}
         </div>
       </form>
     </div>

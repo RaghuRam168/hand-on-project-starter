@@ -44,8 +44,8 @@ const onSubmitHandler = async(event)=>{
   formdata.append("author",author)
   formdata.append("public",input.public)
   formdata.append("photo",img)
-  const response = await axios.post("http://localhost:4000/api/addAPI",formdata)
- 
+  const response = await axios.post("https://apiplace.herokuapp.com/api/addAPI",formdata)
+ // const response = await axios.post(+"addAPI",formdata)
   if(response){
     console.log("API added")
     navigate('/my-api')

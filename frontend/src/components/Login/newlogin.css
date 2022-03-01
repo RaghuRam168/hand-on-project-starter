@@ -56,3 +56,11 @@ h3{
     font-weight: 500;
     font-size: 1rem;
 }
+
+.loading{
+    margin: 30PX auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+}

@@ -2,6 +2,7 @@ import React, { useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./newlogin.css";
+var Spinner = require('react-spinkit');
 const NewLogin = (props) => {
   let navigate = useNavigate();
 
@@ -11,7 +12,7 @@ useEffect(()=>{
     navigate("/dash-board");
   }
 })
-
+  const[loading,setLoading]=useState(false)
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -27,6 +28,7 @@ useEffect(()=>{
   };
   const submitHandler = async (event) => {
     console.log("clicked");
+    setLoading(true)
     event.preventDefault();
     // props.onSignIn(user);
 
@@ -38,7 +40,7 @@ useEffect(()=>{
       };
       setUser({ ...user, loading: true });
       const { data } = await axios.post(
-        "http://localhost:4000/api/Login",
+        "https://apiplace.herokuapp.com/api/Login",
         {
           email:user.email,
           password:user.password
@@ -61,6 +63,7 @@ useEffect(()=>{
       email: "",
       password: "",
     });
+    setLoading(false)
   };
 
   const onRegister = (event) => {
@@ -92,9 +95,12 @@ useEffect(()=>{
             className="form-control"
           />
         </div>
-        <button className="login-btn" onClick={submitHandler}>Login</button>
-        <p className="or">OR</p>
-        <button className="login-btn" onClick={onRegister}>Register</button>
+        {!loading && <button className="login-btn" onClick={submitHandler}>Login</button>}
+        {!loading && <p className="or">OR</p>}
+        {!loading && <button className="login-btn" onClick={onRegister}>Register</button>}
+        <div className="loading">
+          {loading && <Spinner name="line-scale" color="#142683"  style={{margin:"auto"}}/>}
+        </div>
       </form>
     </div>
   );
