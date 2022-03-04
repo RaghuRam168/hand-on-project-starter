@@ -3,7 +3,7 @@ import './NewAPIModal.css'
 import defaultApiImage from './API.jpg'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+var Spinner = require('react-spinkit');
 const NewAPIModal = () => {
 
   const navigate = new useNavigate()
@@ -13,6 +13,7 @@ const NewAPIModal = () => {
   const onClick_X = () =>{
     navigate('/dash-board')
   }
+  const[loading,setLoading] = useState(false)
   const[img,setImg]=useState(defaultApiImage)
   const[input,setInput]=useState({
     ApiName:"",
@@ -36,6 +37,7 @@ const imageHandler = async(event)=>{
 
 const onSubmitHandler = async(event)=>{
   event.preventDefault()
+  setLoading(true)
   console.log("Submit")
   const formdata = new FormData();
   formdata.append("apiName",input.ApiName)
@@ -53,24 +55,28 @@ const onSubmitHandler = async(event)=>{
   else{
     console.log("Error")
   }
+  setLoading(false)
 }
 
   return (
   <div className='modal-container'>
+    <div  className='modal-input-container' >
     <div className='x-btn' >
       <button onClick={onClick_X}>X</button>
     </div>
     <div className='modal-title'>
       <h2>Add new API</h2>
     </div>
-    <div className='modal-input-container'>
+    <div>
       <form onSubmit={onSubmitHandler}>
       <input type="text" placeholder='API Name'onChange={onChangeInput} name='ApiName' value={input.ApiName}  className='modal-input' />
       <input type="text" placeholder='API End Point'onChange={onChangeInput} name='ApiEndPoint' value={input.ApiEndPoint}  className='modal-input' />
       <input type="text" placeholder='Description'onChange={onChangeInput} name='Description' value={input.Description} className='modal-input' />
       <input type='file' onChange={imageHandler}/>
-      <button type='submit'>Add API</button>
+      {!loading &&<button className='add-api-btn'  type='submit'>Add API</button>}
+      {loading && <Spinner name="line-scale" color="#142683"  style={{margin:"auto"}}/>}
       </form>
+    </div>
     </div>
   </div>)
 };

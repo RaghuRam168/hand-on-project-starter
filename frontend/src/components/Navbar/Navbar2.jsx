@@ -15,10 +15,14 @@ const Navbar2 = () => {
     myAccount:false
   })
 
-  const onclickHandler = () =>{
-    localStorage.clear();
-    navigate('/')
+  const onclickNewAPI = () =>{
+    navigate('/new-api')
 }
+
+const onClickLogo=()=>{
+  navigate('/dash-board')
+}
+
   const onClickToggle = ()=>{
     setToggle(!toggle)
     if(toggle_btn===bars_solid)
@@ -51,17 +55,17 @@ const Navbar2 = () => {
 
  
   return <nav>
-      <img src={logo} alt="Cuvette" />
+      <img src={logo} style={{cursor:"pointer"}} alt="Cuvette" onClick={onClickLogo} />
       <img className='toggle' style={{float:"right" , height:"20px"}} onClick={onClickToggle} src={toggle_btn} alt='X'/>
-       {toggle && <div>
+       {toggle && <div className='animation'>
           {toggle && <div className='toggle center'><Link to='/my-api'name='myapi' className='links' onClick={linkHandler} >My APIs</Link></div>}
           {toggle && <div className='toggle center'><Link to='/my-account' className='links' name='myAccount' onClick={linkHandler} >My Account</Link></div>}
-          {toggle && <div className='toggle center'><button  className='new-api-btn' onClick={onclickHandler}>+New API</button></div>}
+          {toggle && <div className='toggle center'><button  className='new-api-btn' onClick={onclickNewAPI}>+New API</button></div>}
       </div>}
       <ul className='list'>
           <li><Link to='/my-api'name='myapi' className={underLine.myapi?'links underline':'links' } onClick={linkHandler} >My APIs</Link></li>
           <li><Link to='/my-account' name='myAccount' className={underLine.myAccount?'links underline':'links' } onClick={linkHandler} >My Account</Link></li>
-          <li><button  className='new-api-btn' onClick={onclickHandler} >+New API</button></li>
+          <li><button  className='new-api-btn' onClick={onclickNewAPI} >+New API</button></li>
       </ul>
   </nav>
 };

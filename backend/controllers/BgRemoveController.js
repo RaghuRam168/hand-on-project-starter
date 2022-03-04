@@ -46,4 +46,4 @@ const BgRemove = (req,res)=>{
     });
 }
 exports.BgRemove = BgRemove
-exports.upload = upload.single('photo')
+exports.upload=upload.single('photo')
