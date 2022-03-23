@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SignUpForm.css";
-var Spinner = require('react-spinkit')
+var Spinner = require("react-spinkit");
 const SignUpForm = (props) => {
   let navigate = useNavigate();
-  const [loading,setLoading]=useState(false)
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({
     fullname: "",
     username: "",
@@ -21,7 +21,7 @@ const SignUpForm = (props) => {
   };
   const submitHandler = async (event) => {
     event.preventDefault();
-    setLoading(true)
+    setLoading(true);
     console.log("clicked");
     const config = {
       headers: {
@@ -29,10 +29,14 @@ const SignUpForm = (props) => {
       },
     };
     try {
-     await axios.post("https://apiplace.herokuapp.com/api/register", user,config);
+      await axios.post(
+        "https://apiplace.herokuapp.com/api/register",
+        user,
+        config
+      );
       navigate("/");
     } catch (error) {
-      alert("Enter the creadentials which are no registered")
+      alert("Enter the creadentials which are no registered");
     }
 
     setUser({
@@ -40,7 +44,7 @@ const SignUpForm = (props) => {
       email: "",
       password: "",
     });
-    setLoading(false)
+    setLoading(false);
   };
 
   const onchange = (event) => {
@@ -49,47 +53,56 @@ const SignUpForm = (props) => {
   };
 
   return (
-    <div className="sign-up-division">
-      <form className="form">
-        <h3>Signup to experience the previlages</h3>
-        <div>
-          <input
-            type="text"
-            placeholder="Full Name"
-            onChange={onChangeHandler}
-            name="fullname"
-            value={user.fullname}
-            className="form-control"
-          />
-        </div>
-        <div>
-          <input
-            type="email"
-            placeholder="Email"
-            onChange={onChangeHandler}
-            name="email"
-            value={user.email}
-            className="form-control"
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={onChangeHandler}
-            name="password"
-            value={user.password}
-            className="form-control"
-          />
-        </div>
-      {!loading && <button className="signup-btn" onClick={submitHandler}>Register</button>}
+    <form className="form">
+      <h3>Signup to experience the previlages</h3>
+      <input
+        type="text"
+        placeholder="Full Name"
+        onChange={onChangeHandler}
+        name="fullname"
+        value={user.fullname}
+        className="form-control"
+      />
+
+      <input
+        type="email"
+        placeholder="Email"
+        onChange={onChangeHandler}
+        name="email"
+        value={user.email}
+        className="form-control"
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        onChange={onChangeHandler}
+        name="password"
+        value={user.password}
+        className="form-control"
+      />
+
+      {!loading && (
+        <button className="login-btn" onClick={submitHandler}>
+          Register
+        </button>
+      )}
       {!loading && <p className="or">OR</p>}
-      {!loading && <button className="signup-btn" onClick={onchange}>Login</button>}
+      {!loading && (
+        <button className="login-btn" onClick={onchange}>
+          Login
+        </button>
+      )}
       <div className="loading">
-          {loading && <Spinner name="line-scale" color="#142683"  style={{margin:"auto"}}/>}
-        </div>
-      </form>
-    </div>
+        {loading && (
+          <Spinner
+            name="line-scale"
+            color="#142683"
+            style={{ margin: "auto" }}
+          />
+        )}
+      </div>
+    </form>
   );
 };
 

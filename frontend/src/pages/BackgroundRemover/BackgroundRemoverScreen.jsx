@@ -27,20 +27,20 @@ const BackgroundRemoverScreen = () => {
 
   return <>
   <Navbar2/>
-  <div className='background-screen-container' >
-      <div className='container1'  >
+  <div className='container' >
+      <div className='upload-left-container'  >
         <h1>Remove image background</h1>
         <p>100% automatic and free</p>
         <div className='background-image-container'>
           <img src={backgroundImage} alt='background'/>
         </div>
         <div className='buttons' >
-        {remove? <button onClick={clearImageHandler} >Clear Image</button>:<p></p>}
+        {remove? <button onClick={clearImageHandler}  >Clear Image</button>:<p></p>}
         {remove? <button onClick={downloadHandler}>Download</button>:<p></p>}
         </div>
         </div>
-      <div className='container2' >
-        <div className='upload-container' > <UploadImage  onRemoveBackground={onRemoveBackground} /></div>
+      <div className='right-container' >
+       <UploadImage  onRemoveBackground={onRemoveBackground} />
        </div>
   </div>
   </>

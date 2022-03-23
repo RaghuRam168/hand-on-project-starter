@@ -3,22 +3,29 @@ import person from "../person.jpeg";
 import LoginForm from "../../components/Login/NewLogin";
 import "./LoginPage.css"
 import Navbar from "../../components/Navbar/Navbar";
+import NewLogin from "../../components/Login/NewLogin";
 const LoginPage = () => {
   return (
     <>
       <Navbar/>
-      <div className="login">
-        <div className="item1">
-          <img className="img" src={person} alt="person" />
-          <h2 className="heading" >Welcome to your Dashboard</h2>
-          <p className="description">
+      <div className="container">
+      <div className="left-container">
+        <div className="login-img">
+          <img src={person} alt="person" />
+        </div>
+        <div className="login-title">
+          <h2>Welcome to your Dashboard</h2>
+        </div>
+        <div className="login-description">
+          <p>
             Your uploaded APIs will be displayed here once you login to your
             account
           </p>
         </div>
-        <div className="item2">
-            <LoginForm />
-        </div>
+      </div>
+      <div className="right-container">
+        <NewLogin/>
+      </div>
     </div>
     </>
   );
