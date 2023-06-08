@@ -33,7 +33,7 @@ const UploadImage = (props) => {
     setLoading(true);
     const postImage = async () => {
       const response = await axios.post(
-        "https://apiplace.herokuapp.com/api/bg-remove",
+        "https://ninja-fmcp.onrender.com/api/bg-remove",
         formData
       );
       console.log(response);

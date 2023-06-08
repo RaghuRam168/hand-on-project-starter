@@ -30,7 +30,7 @@ const SignUpForm = (props) => {
     };
     try {
       await axios.post(
-        "https://apiplace.herokuapp.com/api/register",
+        "https://ninja-fmcp.onrender.com/api/register",
         user,
         config
       );

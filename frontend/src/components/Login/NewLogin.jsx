@@ -40,7 +40,7 @@ const NewLogin = (props) => {
       };
       setUser({ ...user, loading: true });
       const { data } = await axios.post(
-        "https://apiplace.herokuapp.com/api/Login",
+        "https://ninja-fmcp.onrender.com/api/Login",
         {
           email: user.email,
           password: user.password,
